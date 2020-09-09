@@ -1,0 +1,32 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:@javascript-eslint/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+      "import/extensions": [
+	      "error",
+	      "ignorePackages",
+	      {
+	        "js": "never"
+	      }
+	    ]
+    },
+    "settings": {
+	    "import/resolver": {
+	      "javascript": {}
+	    }
+	  }
+}
