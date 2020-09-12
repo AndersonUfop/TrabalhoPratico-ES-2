@@ -6,8 +6,9 @@ const Home = () => {
 
   return (
 
+
     <Container>
-      <h1>Hello World</h1>
+      <h1>Pets</h1>
     </Container>
 
   );
