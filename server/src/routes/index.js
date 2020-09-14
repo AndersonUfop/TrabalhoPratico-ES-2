@@ -1,36 +1,20 @@
-const crypto = require('crypto');
 const express = require('express');
-const knex = require('../database/connection');
+
+const PetsController = require('../controllers/PetsController');
 
 const routes = express.Router();
 
-routes.get('/pets', (request, response) => {
-  return response.json({ message: 'Pets' });
+// Cadastrar pets
+routes.post('/create', PetsController.create);
 
-});
+// Listar pets
+routes.get('/pets', PetsController.index);
 
-routes.post('/create', async(request, response) => {
-  const id = crypto.randomBytes(4).toString('HEX');
+// Editar pets
+routes.put('/update/:id', PetsController.update);
 
-  const {
-    image,
-    type,
-    sex,
-    breed,
-    coat
-  } = request.body;
-
-  await knex('pets').insert({
-    id,
-    image,
-    type,
-    sex,
-    breed,
-    coat
-  });
-
-  return response.json({ success: true })
-});
+// Excluir pet
+routes.delete('/delete/:id', PetsController.delete);
 
 module.exports = routes;
 
