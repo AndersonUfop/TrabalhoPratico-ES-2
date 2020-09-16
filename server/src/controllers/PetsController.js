@@ -7,8 +7,17 @@ module.exports = {
   async index(request, response) {
     const pets = await knex('pets').select('*');
 
-    return response.json(pets);
+    const serializedPets = pets.map(pet => {
+      return {
+        ...pets,
+        image_url: `http://192.168.0.106:3333/uploads/${pet.image}`,
+      };
+    });
+
+    return response.json(serializedPets);
   },
+
+
 
   async create (request, response) {
     const id = crypto.randomBytes(4).toString('HEX');
@@ -23,7 +32,7 @@ module.exports = {
 
     await knex('pets').insert({
       id,
-      image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=120q=80',
+      image: request.file.filename,
       type,
       sex,
       breed,
