@@ -5,19 +5,17 @@ const crypto = require('crypto');
 module.exports = {
 
   async index(request, response) {
-    const pets = await knex('pets').select('*');
+    const pets = await knex('pets').select('*').distinct();
 
-    const serializedPets = pets.map(pet => {
-      return {
-        ...pets,
+    const serializedPets =  pets.map(pet => {
+        return {
+        ...pet,
         image_url: `http://192.168.0.106:3333/uploads/${pet.image}`,
       };
     });
 
     return response.json(serializedPets);
   },
-
-
 
   async create (request, response) {
     const id = crypto.randomBytes(4).toString('HEX');
@@ -52,8 +50,7 @@ module.exports = {
     } = request.body;
 
     const { id } = request.params;
-
-    await knex('pets')
+    const id_pet = await knex('pets')
       .update({
         id,
         image,
@@ -63,13 +60,19 @@ module.exports = {
         coat
        }).where({ id });
 
-      return response.send();
+       if (id_pet === 0)
+        return response.status(400).json({ message: 'Erro! Animal não encontrado!'})
+
+      return response.json({ pet: request.body });
   },
 
   async delete (request, response) {
 
     const { id } = request.params;
-    await knex('pets').where('id', id).delete();
+    const id_pet = await knex('pets').where('id', id).delete();
+
+    if (id_pet === 0 )
+      return response.status(400).json({message: 'Erro! Animal não encontrado'});
 
     return response.status(204).send();
   }
