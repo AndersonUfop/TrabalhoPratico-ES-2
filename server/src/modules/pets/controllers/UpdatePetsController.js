@@ -1,25 +1,29 @@
-const knex = require('../models/database/connection');
+const knex = require('../../../models/database/connection');
 
 module.exports = {
 
   async update (request, response) {
     const {
-      image,
-      type,
-      sex,
+      name,
+      specie,
       breed,
-      coat
+      port,
+      age,
+      sex,
+      city
     } = request.body;
 
     const { id } = request.params;
     const id_pet = await knex('pets')
       .update({
         id,
-        image,
-        type,
-        sex,
+        name,
+        specie,
         breed,
-        coat
+        port,
+        age,
+        sex,
+        city
        }).where({ id });
 
        if (id_pet === 0)

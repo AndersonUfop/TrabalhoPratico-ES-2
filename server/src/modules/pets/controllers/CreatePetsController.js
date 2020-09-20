@@ -1,4 +1,4 @@
-const knex = require('../models/database/connection');
+const knex = require('../../../models/database/connection');
 const crypto = require('crypto');
 
 module.exports = {
@@ -7,20 +7,28 @@ module.exports = {
     const id = crypto.randomBytes(4).toString('HEX');
 
     const {
-      type,
-      sex,
+      name,
+      specie,
       breed,
-      coat
+      port,
+      age,
+      sex,
+      city,
+      user_id,
     } = request.body;
 
 
     await knex('pets').insert({
       id,
       image: request.file.filename,
-      type,
-      sex,
+      name,
+      specie,
       breed,
-      coat
+      port,
+      age,
+      sex,
+      city,
+      user_id,
     });
 
     return response.json({ pet: request.body })
