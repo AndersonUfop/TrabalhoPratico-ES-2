@@ -1,6 +1,6 @@
 const knex = require('../../../models/database/connection');
 
-module.exports = {
+class FindPetsByUsers {
 
   async show(request, response) {
 
@@ -11,3 +11,5 @@ module.exports = {
   }
 
 }
+
+module.exports = new FindPetsByUsers();

@@ -1,6 +1,6 @@
 const knex = require('../../../models/database/connection');
 
-module.exports = {
+class DeletePetsController {
 
   async delete (request, response) {
 
@@ -13,4 +13,6 @@ module.exports = {
     return response.status(204).send();
   }
 
-};
+}
+
+module.exports = new DeletePetsController();

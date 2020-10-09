@@ -1,6 +1,6 @@
 const knex = require('../../../models/database/connection');
 
-module.exports = {
+class UpdatePetsController {
 
   async update (request, response) {
     const {
@@ -32,4 +32,6 @@ module.exports = {
       return response.json({ pet: request.body });
   }
 
-};
+}
+
+module.exports = new UpdatePetsController();

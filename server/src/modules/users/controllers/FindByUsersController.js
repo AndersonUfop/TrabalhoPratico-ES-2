@@ -1,6 +1,6 @@
 const knex = require('../../../models/database/connection');
 
-module.exports = {
+class FindByUsersController {
 
   async index(request, response) {
     const users = await knex('users').select('*').distinct();
@@ -9,3 +9,5 @@ module.exports = {
   }
 
 }
+
+module.exports = new FindByUsersController();

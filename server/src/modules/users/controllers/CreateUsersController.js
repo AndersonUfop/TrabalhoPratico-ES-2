@@ -1,7 +1,7 @@
 const knex = require('../../../models/database/connection');
 const crypto = require('crypto');
 
-module.exports = {
+class CreateUsersController {
 
   async create (request, response) {
     const id = crypto.randomBytes(4).toString('HEX');
@@ -26,5 +26,6 @@ module.exports = {
 
     return response.json({ user: request.body })
   }
+}
 
-};
+module.exports = new CreateUsersController();

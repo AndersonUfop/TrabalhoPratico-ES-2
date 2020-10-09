@@ -1,6 +1,6 @@
 const knex = require('../../../models/database/connection');
 
-module.exports = {
+class FindByPetsController {
 
   async index(request, response) {
     const pets = await knex('pets').select('*').distinct();
@@ -16,3 +16,5 @@ module.exports = {
   }
 
 }
+
+module.exports = new FindByPetsController();
