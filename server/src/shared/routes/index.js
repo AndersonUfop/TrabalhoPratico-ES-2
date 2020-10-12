@@ -11,6 +11,7 @@ const PetsDelete = require('../../modules/pets/controllers/DeletePetsController'
 
 const UsersCreate = require('../../modules/users/controllers/CreateUsersController');
 const UsersView = require('../../modules/users/controllers/FindByUsersController');
+const UsersDelete = require('../../modules/users/controllers/DeleteUsersController');
 
 const routes = express.Router();
 const upload = multer(multerConfig);
@@ -20,6 +21,9 @@ routes.get('/users', UsersView.index);
 
 // Inserir usuários
 routes.post('/users/create', UsersCreate.create);
+
+// Excluir usuários
+routes.delete('/users/delete/:id', UsersDelete.delete);
 
 // Listar pets
 routes.get('/pets', PetsView.index);
@@ -33,7 +37,7 @@ routes.put('/update/:id', PetsUpdate.update);
 routes.delete('/delete/:id', PetsDelete.delete);
 
 // Cadastrar pets
-routes.post('/create', upload.single('image'), PetsCreate.create);
+routes.post('/pets/create', upload.single('image'), PetsCreate.create);
 
 
 module.exports = routes;

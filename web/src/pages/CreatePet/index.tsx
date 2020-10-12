@@ -1,55 +1,82 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
 import './styles.css';
 
-const CreatePet = () => {
-    
+interface User {
+    id: string;
+    name: string;
+}
 
-    const [selectedItems, setSelectedItems] = useState<number[]>([]);
-    const [selectedFile, setSelectedFile] = useState<File>();
-    
+const CreatePet = () => {
+    const [users, setUsers] = useState<User[]>([]);
+
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
-        whatsapp: '',
+        specie: '',
+        breed: '',
+        port: '',
+        age: '',
+        sex: '',
+        city: '',
+        user_id: '',
     });
 
-    const [selectedUf, setSelectedUf] = useState('0');
-    const [selectedCity, setSelectedCity] = useState('0');
-    const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
+    const [selectedUser, setSelectedUser] = useState('0');
+    const [selectedFile, setSelectedFile] = useState<File>();
 
     const history = useHistory();
 
+    useEffect(() => {
+        api.get('users').then(response => {
+            setUsers(response.data);
+            console.log(response.data);
+        });
+    }, []);
+
+    function handleSelectUsers(event: ChangeEvent<HTMLSelectElement>) {
+        const user = event.target.value;
+
+        setSelectedUser(user);
+
+        console.log(user);
+    }
+
+    function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
+
+        setFormData({ ...formData, [name]: value });
+    }
+
+
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-
-        const { name, email, whatsapp } = formData;
-        const uf = selectedUf;
-        const city = selectedCity;
-        const [ latitude, longitude ] = selectedPosition;
-        const items = selectedItems;
+        const { name, specie, breed, port, age, sex, city, user_id} = formData;
 
         const data = new FormData();
+        
+        data.append('name', name);
+        data.append('specie', specie);
+        data.append('breed', breed);
+        data.append('port', port);
+        data.append('age', age);
+        data.append('sex', sex);
+        data.append('city', city);
+        data.append('user_id', user_id);
+        
+        if (selectedFile) {
+            data.append('image', selectedFile)
+        }
+       
 
-            data.append('name', name);
-            data.append('email', email);
-            data.append('whatsapp', whatsapp);
-            data.append('uf', uf);
-            data.append('city', city);
-            data.append('latitude', String(latitude));
-            data.append('longitude', String(longitude));
-            data.append('items', items.join(','));
+        console.log(data);
 
-            if (selectedFile) {
-                data.append('image', selectedFile)
-            }
-
-        await api.post('points', data);
-
-        alert('Ponto de coleta criado.');
+        await api.post('pets/create', data);
+        
+        alert('Pet cadastrado com sucesso.');
+        
         history.push('/');
     }
 
@@ -80,9 +107,9 @@ const CreatePet = () => {
                         <label htmlFor="name"> NOME DO PET</label>
                         <input 
                             type="text"
-                            name="nome"
-                            id="nome"
-                            // onChange={handleInputChange}
+                            name="name"
+                            id="name"
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -90,9 +117,9 @@ const CreatePet = () => {
                         <label htmlFor="name"> ESPÉCIE</label>
                         <input 
                             type="text"
-                            name="especie"
-                            id="especie"
-                           // onChange={handleInputChange}
+                            name="specie"
+                            id="specie"
+                           onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -102,9 +129,9 @@ const CreatePet = () => {
                             <label htmlFor="name"> RAÇA</label>
                             <input 
                                 type="text"
-                                name="raca"
-                                id="raca"
-                                // onChange={handleInputChange}
+                                name="breed"
+                                id="breed"
+                                onChange={handleInputChange}
                             />
                         </div>
 
@@ -112,9 +139,9 @@ const CreatePet = () => {
                             <label htmlFor="name">PORTE</label>
                             <input 
                                 type="text"
-                                name="porte"
-                                id="porte"
-                                // onChange={handleInputChange}
+                                name="port"
+                                id="port"
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -124,9 +151,9 @@ const CreatePet = () => {
                             <label htmlFor="name"> IDADE</label>
                             <input 
                                 type="text"
-                                name="idade"
-                                id="idade"
-                                // onChange={handleInputChange}
+                                name="age"
+                                id="age"
+                                onChange={handleInputChange}
                             />
                         </div>
 
@@ -134,9 +161,9 @@ const CreatePet = () => {
                             <label htmlFor="name">SEXO</label>
                             <input 
                                 type="text"
-                                name="sexo"
-                                id="sexo"
-                                // onChange={handleInputChange}
+                                name="sex"
+                                id="sex"
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -145,15 +172,34 @@ const CreatePet = () => {
                             <label htmlFor="name">CIDADE</label>
                             <input 
                                 type="text"
-                                name="cidade"
-                                id="cidade"
-                                // onChange={}
+                                name="city"
+                                id="city"
+                                onChange={handleInputChange}
                             />
                         </div>
+
+                    <div className="field">
+                        <label htmlFor="user">Nome do usuário</label>
+                        <select 
+                            name="user_id" 
+                            id="user_id"
+                            value={selectedUser}
+                            onChange={handleSelectUsers}
+                        >
+                        
+                        <option value="0">Selecione o usuário</option>
+                            {users.map(user => (
+                                <option key={user.id} value={user.name}>{user.name}</option>
+                            ))}
+
+                        </select>
+                    </div>
+
+                       
                 </fieldset>
                 
                 <div className="Buttons">
-                    <button type="button">Cadastrar pet</button> 
+                    <button type="submit">Cadastrar pet</button> 
                     <button type="button">Quero adotar</button>
                 </div>
                 

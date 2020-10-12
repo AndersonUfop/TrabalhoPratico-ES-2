@@ -1,24 +1,18 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { Map, TileLayer, Marker } from 'react-leaflet';
-import { LeafletMouseEvent } from 'leaflet';
 import api from '../../services/api';
-import axios from 'axios';
-import Dropzone from '../../components/Dropzone';
-
 import './styles.css';
-import logo from '../../assets/logo.svg';
 
 // qnd criar um estado pra array ou objeto: manualmente informar o tipo da variavel
 const CreateUser = () => {
-    const [nome, setNome] = useState<string[]>([]);
-    const [telefone, setTelefone] = useState<string[]>([]);
-    
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
-        whatsapp: '',
+        telephone: '',
+        mail: '',
+        password: '',
+        address: '',
+        
     });
 
     const history = useHistory();
@@ -29,15 +23,30 @@ const CreateUser = () => {
         setFormData({ ...formData, [name]: value });
     }
 
-  
-
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        const data = new FormData();
-           
-        await api.post('points', data);
+        const {
+            name,
+            telephone,
+            mail,
+            password,
+            address
+        } = formData;
 
-        alert('Ponto de coleta criado.');
+        const data = {
+            name,
+            telephone,
+            mail,
+            password,
+            address
+        };
+
+        console.log(data);
+
+        await api.post('users/create' , data);
+
+       alert('Usuario criado com sucesso!');
+
         history.push('/');
     }
 
@@ -66,9 +75,9 @@ const CreateUser = () => {
                         <label htmlFor="name"> NOME DO USUÁRIO</label>
                         <input 
                             type="text"
-                            name="nome"
-                            id="nome"
-                            // onChange={handleInputChange}
+                            name="name"
+                            id="name"
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -77,9 +86,9 @@ const CreateUser = () => {
                             <label htmlFor="name"> TELEFONE</label>
                             <input 
                                 type="text"
-                                name="telefone"
-                                id="telefone"
-                                // onChange={handleInputChange}
+                                name="telephone"
+                                id="telephone"
+                                onChange={handleInputChange}
                             />
                         </div>
 
@@ -87,9 +96,9 @@ const CreateUser = () => {
                             <label htmlFor="email">EMAIL</label>
                             <input 
                                 type="email"
-                                name="email"
-                                id="email"
-                                // onChange={handleInputChange}
+                                name="mail"
+                                id="mail"
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -99,9 +108,9 @@ const CreateUser = () => {
                             <label htmlFor="password"> SENHA</label>
                             <input 
                                 type="text"
-                                name="senha"
-                                id="senha"
-                                // onChange={handleInputChange}
+                                name="password"
+                                id="password"
+                                onChange={handleInputChange}
                             />
                         </div>
 
@@ -111,7 +120,6 @@ const CreateUser = () => {
                                 type="text"
                                 name="conf-senha"
                                 id="conf-senha"
-                                // onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -120,20 +128,18 @@ const CreateUser = () => {
                             <label htmlFor="name">ENDEREÇO</label>
                             <input 
                                 type="text"
-                                name="endereco"
-                                id="endereco"
-                                // onChange={}
+                                name="address"
+                                id="address"
+                                onChange={handleInputChange}
                             />
                         </div>
                 </fieldset>
-                
                 <div className="Buttons">
-                    <button type="button">Cadastrar usuário</button> 
+                    <button type="submit">Cadastrar usuário</button> 
                     <button type="button" onClick={redirectCreatePet}>Cadastrar pet</button> 
                     <button type="button">Quero adotar</button>
                 </div>
-                
-            </form>
+                </form>
         </div>
     );
 };
