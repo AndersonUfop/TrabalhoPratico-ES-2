@@ -80,6 +80,7 @@ const CreateUser = () => {
                                 type="text"
                                 name="name"
                                 id="name"
+                                placeholder="Digite o seu nome"
                                 onChange={handleInputChange}
                             />
                         </div>
@@ -91,6 +92,7 @@ const CreateUser = () => {
                                     type="text"
                                     name="telephone"
                                     id="telephone"
+                                    placeholder="Digite o seu telefone"
                                     onChange={handleInputChange}
                                 />
                             </div>
@@ -101,6 +103,7 @@ const CreateUser = () => {
                                     type="email"
                                     name="mail"
                                     id="mail"
+                                    placeholder="Digite o seu e-mail"
                                     onChange={handleInputChange}
                                 />
                             </div>
@@ -133,6 +136,7 @@ const CreateUser = () => {
                                     type="text"
                                     name="address"
                                     id="address"
+                                    placeholder="Digite o seu endereço"
                                     onChange={handleInputChange}
                                 />
                             </div>

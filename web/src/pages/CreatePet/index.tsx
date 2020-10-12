@@ -18,16 +18,16 @@ const CreatePet = () => {
 
     const [formData, setFormData] = useState({
         name: '',
-        specie: '',
         breed: '',
-        port: '',
         age: '',
-        sex: '',
         city: '',
     });
 
     const [selectedUser, setSelectedUser] = useState('0');
     const [selectedFile, setSelectedFile] = useState<File>();
+    const [selectedSpecie, setSelectedSpecie] = useState('0');
+    const [selectedPort, setSelectedPort] = useState('0');
+    const [selectedSex, setSelectedSex] = useState('0');
 
     const history = useHistory();
 
@@ -46,6 +46,24 @@ const CreatePet = () => {
         console.log(user);
     }
 
+    function handleSelectSpecies(event: ChangeEvent<HTMLSelectElement>) {
+        const specie = event.target.value;
+        setSelectedSpecie(specie);
+        console.log(specie);
+    }
+
+    function handleSelectPort(event: ChangeEvent<HTMLSelectElement>) {
+        const port = event.target.value;
+        setSelectedPort(port);
+        console.log(port);
+    }
+
+    function handleSelectSex(event: ChangeEvent<HTMLSelectElement>) {
+        const sex = event.target.value;
+        setSelectedPort(sex);
+        console.log(sex);
+    }
+
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
 
@@ -55,8 +73,11 @@ const CreatePet = () => {
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        const { name, specie, breed, port, age, sex, city } = formData;
+        const { name, breed, age, city } = formData;
         const user = selectedUser;
+        const specie = selectedSpecie;
+        const port = selectedPort;
+        const sex = selectedSex;
 
         const data = new FormData();
         
@@ -75,6 +96,7 @@ const CreatePet = () => {
        
 
         console.log(data);
+
 
         await api.post('pets/create', data);
         
@@ -113,40 +135,51 @@ const CreatePet = () => {
                                 type="text"
                                 name="name"
                                 id="name"
+                                placeholder="Digite o nome do animal"
                                 onChange={handleInputChange}
                             />
                         </div>
 
                         <div className='field'> 
-                            <label htmlFor="name"> ESPÉCIE</label>
-                            <input 
-                                type="text"
-                                name="specie"
-                                id="specie"
-                            onChange={handleInputChange}
-                            />
+                            <label htmlFor="especie"> ESPÉCIE</label>
+                            <select
+                                    name="specie"
+                                    id="specie"
+                                    value={selectedSpecie}
+                                    onChange={handleSelectSpecies}
+                                >
+                                <option value="0">Selecione uma espécie</option>
+                                <option value="Cachorro">Cachorro</option>
+                                <option value="Gato">Gato</option>
+                                </select>
                         </div>
                     </div>
 
                         <div className="field-group">
                             <div className='field'> 
-                                <label htmlFor="name"> RAÇA</label>
+                                <label htmlFor="raca"> RAÇA</label>
                                 <input 
                                     type="text"
                                     name="breed"
                                     id="breed"
+                                    placeholder="Digite a raça do animal"
                                     onChange={handleInputChange}
                                 />
                             </div>
 
                             <div className='field'> 
-                                <label htmlFor="name">PORTE</label>
-                                <input 
-                                    type="text"
+                                <label htmlFor="porte">PORTE</label>
+                                <select
                                     name="port"
                                     id="port"
-                                    onChange={handleInputChange}
-                                />
+                                    value={selectedPort}
+                                    onChange={handleSelectPort}
+                                >
+                                <option value="0">Selecione o porte do animal</option>
+                                <option value="Pequeno">Pequeno</option>
+                                <option value="Médio">Médio</option>
+                                <option value="Grande">Grande</option>
+                                </select>
                             </div>
                         </div>
 
@@ -154,21 +187,26 @@ const CreatePet = () => {
                             <div className='field'> 
                                 <label htmlFor="name"> IDADE</label>
                                 <input 
-                                    type="text"
+                                    type="number"
                                     name="age"
                                     id="age"
+                                    placeholder="Digite a cidade"
                                     onChange={handleInputChange}
                                 />
                             </div>
 
                             <div className='field'> 
                                 <label htmlFor="name">SEXO</label>
-                                <input 
-                                    type="text"
-                                    name="sex"
-                                    id="sex"
-                                    onChange={handleInputChange}
-                                />
+                                <select
+                                    name="sexo"
+                                    id="sexo"
+                                    value={selectedSex}
+                                    onChange={handleSelectSex}
+                                >
+                                <option value="0">Selecione o sexo</option>
+                                <option value="Macho">Macho</option>
+                                <option value="Fêmea">Fêmea</option>
+                                </select>
                             </div>
                         </div>
 
@@ -178,13 +216,15 @@ const CreatePet = () => {
                                     type="text"
                                     name="city"
                                     id="city"
+                                    placeholder="Digite a sua cidade"
                                     onChange={handleInputChange}
                                 />
                             </div>
 
                         <div className="field">
                             <label htmlFor="user">Nome do usuário</label>
-                            <select 
+                            <select
+                                className="user" 
                                 name="user_id" 
                                 id="user_id"
                                 value={selectedUser}
@@ -203,8 +243,10 @@ const CreatePet = () => {
                     </fieldset>
                     
                     <div className="Buttons">
-                        <button type="submit">Cadastrar pet</button> 
-                        <button type="button">Quero adotar</button>
+                        <button type="submit">Cadastrar pet</button>
+                        <Link to="/dashboard"> 
+                            <button type="button">Quero adotar</button>
+                        </Link>
                     </div>
                     
                 </form>

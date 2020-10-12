@@ -82,32 +82,38 @@
   
   #page-create-point form .field input[type=text],
   #page-create-point form .field input[type=email],
-  #page-create-point form .field input[type=number],
-  #page-create-point form .field select#user
+  #page-create-point form .field input[type=number]
    {
     flex: 1;
     background: #472a5c;
     border-radius: 8px;
     border: 0;
     padding: 16px 24px;
-    font-size: 16px;
     color: #FFF;
+    font-size: 14pt;
+    font-family: 'Lato';
+    font-weight: 500;
   }
+
+  #page-create-point form .field select#specie,
+  #page-create-point form .field select#port,
+  #page-create-point form .field select#sexo,
+  #page-create-point form .field select#user_id.user {
+    background: #472a5c;
+    color: #FFF;
+    font-size: 14pt;
+    font-family: 'Lato';
+    font-weight: 500;
+  }
+
 
  
   
-  #page-create-point form .field select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    flex: 1;
-    background: #F0F0F5;
-    border-radius: 8px;
-    border: 0;
-    padding: 16px 24px;
-    font-size: 16px;
-    color: #6C6C80;
-  }
+  /* #page-create-point form .field select#user_id.user {
+    background: #472a5c;
+    color: #FFF;
+    font-size: 18px;
+  } */
   
   #page-create-point form .field input::placeholder {
     color: #A0A0B2;
