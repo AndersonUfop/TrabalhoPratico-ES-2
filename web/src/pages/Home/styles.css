@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap');
 
 #page-home {
     height: 100vh;
@@ -16,6 +17,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
   
   #page-home .content header {
     margin: 48px 0 0;
@@ -25,19 +27,114 @@
     justify-content: center;
   }
 
+  #page-home .content header .menu {
+    display: flex;
+    flex-direction: row;
+  }
+
   #page-home .content header strong {
     
     margin-left: 200px;
   }
 
-  #page-home .content header ul{
+   #page-home .content header ul{
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
-    margin-left: 800px;
+    margin-left: 400px;
   }
 
+  #page-home .content header ul li {
+    list-style-type: none;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #FFF;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 900;
+  }
+
+  #page-home .content ul button {
+    width: 200px;
+    height: 50px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    border: none;
+
+    font-size: 20px;
+    font-family: 'Lato';
+    font-weight: 700;
+    background: #390d57;
+    color: #FFF;
+    border-radius: 5%;
+    cursor: pointer;
+  }
+
+  #page-home .content ul button:hover {
+    background: #5e019c;
+  }
+
+  #page-home .content ul .dropdown {
+    
+    position: relative;
+    display: inline-block;
+  }
+
+  #page-home .content ul .dropdown .opcoes-cadastrar {
+    
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    min-height: 100px;
+    background: #7D06F5;
+    margin-top: -5px;
+    margin-left: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  #page-home .content ul .dropdown .opcoes-cadastrar a {
+    color: #FFF;
+    font-size: 24px;
+    font: 'Lato';
+    font-weight: 700;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  #page-home .content ul .dropdown .opcoes-cadastrar a:hover {
+    background-color: #000;
+  }
+
+  #page-home .content ul .dropdown:hover .opcoes-cadastrar {
+    display: block;
+  }
+
+
+
+  #page-home .content header ul li:first-child {
+    margin-left: 40px;
+  }
+
+  #page-home .content header ul a {
+    text-decoration: none;
+  }
+
+  #page-home .content header ul .active {
+    color: #472a5c;
+  }
+
+  #page-home .content header ul li:hover {
+    color: #472a5c;
+    opacity: 0.6;
+  }
+
+  
+  
+  
+/*
   #page-home .content header ul li {
     list-style: none;
     font-size: 16pt;
@@ -50,7 +147,7 @@
   #page-home .content header ul li:hover {
     background: #FFF;
   }
-
+ */
 
   
   #page-home .content main {

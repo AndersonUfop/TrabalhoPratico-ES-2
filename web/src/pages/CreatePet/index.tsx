@@ -5,6 +5,8 @@ import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
 import './styles.css';
 
+import logo from '../../assets/logo2.png';
+
 interface User {
     id: string;
     name: string;
@@ -12,6 +14,7 @@ interface User {
 
 const CreatePet = () => {
     const [users, setUsers] = useState<User[]>([]);
+    
 
     const [formData, setFormData] = useState({
         name: '',
@@ -21,7 +24,6 @@ const CreatePet = () => {
         age: '',
         sex: '',
         city: '',
-        user_id: '',
     });
 
     const [selectedUser, setSelectedUser] = useState('0');
@@ -53,7 +55,8 @@ const CreatePet = () => {
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        const { name, specie, breed, port, age, sex, city, user_id} = formData;
+        const { name, specie, breed, port, age, sex, city } = formData;
+        const user = selectedUser;
 
         const data = new FormData();
         
@@ -64,7 +67,7 @@ const CreatePet = () => {
         data.append('age', age);
         data.append('sex', sex);
         data.append('city', city);
-        data.append('user_id', user_id);
+        data.append('user_id', user);
         
         if (selectedFile) {
             data.append('image', selectedFile)
@@ -84,126 +87,128 @@ const CreatePet = () => {
     // Renderização da página
     return (
         <div id='page-create-point'>
-            <header>
+            <div className="content">
+                <header>
+                <img src={logo} alt="Logo" height={64} />
+                    <Link to='/'>
+                        <FiArrowLeft />
+                        Voltar para home
+                    </Link>
+                </header>
 
-                <Link to='/'>
-                    <FiArrowLeft />
-                    Voltar para home
-                </Link>
-            </header>
+                <form onSubmit={handleSubmit}>
+                    <h1>Cadastro de pets</h1>
 
-            <form onSubmit={handleSubmit}>
-                <h1>Cadastro de pets</h1>
+                    <Dropzone onFileUploaded={setSelectedFile} />
 
-                <Dropzone onFileUploaded={setSelectedFile} />
+                    <fieldset>
+                        <legend>
+                            <h2> Dados </h2>
+                        </legend>
 
-                <fieldset>
-                    <legend>
-                        <h2> Dados </h2>
-                    </legend>
+                    <div className="field-group">
+                        <div className='field'> 
+                            <label htmlFor="name"> NOME DO PET</label>
+                            <input 
+                                type="text"
+                                name="name"
+                                id="name"
+                                onChange={handleInputChange}
+                            />
+                        </div>
 
-                <div className="field-group">
-                    <div className='field'> 
-                        <label htmlFor="name"> NOME DO PET</label>
-                        <input 
-                            type="text"
-                            name="name"
-                            id="name"
+                        <div className='field'> 
+                            <label htmlFor="name"> ESPÉCIE</label>
+                            <input 
+                                type="text"
+                                name="specie"
+                                id="specie"
                             onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div className='field'> 
-                        <label htmlFor="name"> ESPÉCIE</label>
-                        <input 
-                            type="text"
-                            name="specie"
-                            id="specie"
-                           onChange={handleInputChange}
-                        />
-                    </div>
-                </div>
-
-                    <div className="field-group">
-                        <div className='field'> 
-                            <label htmlFor="name"> RAÇA</label>
-                            <input 
-                                type="text"
-                                name="breed"
-                                id="breed"
-                                onChange={handleInputChange}
-                            />
-                        </div>
-
-                        <div className='field'> 
-                            <label htmlFor="name">PORTE</label>
-                            <input 
-                                type="text"
-                                name="port"
-                                id="port"
-                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
 
-                    <div className="field-group">
-                        <div className='field'> 
-                            <label htmlFor="name"> IDADE</label>
-                            <input 
-                                type="text"
-                                name="age"
-                                id="age"
-                                onChange={handleInputChange}
-                            />
+                        <div className="field-group">
+                            <div className='field'> 
+                                <label htmlFor="name"> RAÇA</label>
+                                <input 
+                                    type="text"
+                                    name="breed"
+                                    id="breed"
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+
+                            <div className='field'> 
+                                <label htmlFor="name">PORTE</label>
+                                <input 
+                                    type="text"
+                                    name="port"
+                                    id="port"
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="field-group">
+                            <div className='field'> 
+                                <label htmlFor="name"> IDADE</label>
+                                <input 
+                                    type="text"
+                                    name="age"
+                                    id="age"
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+
+                            <div className='field'> 
+                                <label htmlFor="name">SEXO</label>
+                                <input 
+                                    type="text"
+                                    name="sex"
+                                    id="sex"
+                                    onChange={handleInputChange}
+                                />
+                            </div>
                         </div>
 
                         <div className='field'> 
-                            <label htmlFor="name">SEXO</label>
-                            <input 
-                                type="text"
-                                name="sex"
-                                id="sex"
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                    </div>
+                                <label htmlFor="name">CIDADE</label>
+                                <input 
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    onChange={handleInputChange}
+                                />
+                            </div>
 
-                    <div className='field'> 
-                            <label htmlFor="name">CIDADE</label>
-                            <input 
-                                type="text"
-                                name="city"
-                                id="city"
-                                onChange={handleInputChange}
-                            />
+                        <div className="field">
+                            <label htmlFor="user">Nome do usuário</label>
+                            <select 
+                                name="user_id" 
+                                id="user_id"
+                                value={selectedUser}
+                                onChange={handleSelectUsers}
+                            >
+                            
+                            <option value="0">Selecione o usuário</option>
+                                {users.map(user => (
+                                    <option key={user.id} value={user.id}>{user.name}</option>
+                                ))}
+
+                            </select>
                         </div>
 
-                    <div className="field">
-                        <label htmlFor="user">Nome do usuário</label>
-                        <select 
-                            name="user_id" 
-                            id="user_id"
-                            value={selectedUser}
-                            onChange={handleSelectUsers}
-                        >
                         
-                        <option value="0">Selecione o usuário</option>
-                            {users.map(user => (
-                                <option key={user.id} value={user.name}>{user.name}</option>
-                            ))}
-
-                        </select>
+                    </fieldset>
+                    
+                    <div className="Buttons">
+                        <button type="submit">Cadastrar pet</button> 
+                        <button type="button">Quero adotar</button>
                     </div>
-
-                       
-                </fieldset>
-                
-                <div className="Buttons">
-                    <button type="submit">Cadastrar pet</button> 
-                    <button type="button">Quero adotar</button>
-                </div>
-                
-            </form>
+                    
+                </form>
+            </div>
         </div>
     );
 };

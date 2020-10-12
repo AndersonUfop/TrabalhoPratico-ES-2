@@ -16,6 +16,7 @@ const UsersDelete = require('../../modules/users/controllers/DeleteUsersControll
 const routes = express.Router();
 const upload = multer(multerConfig);
 
+
 // Listar usuários
 routes.get('/users', UsersView.index);
 

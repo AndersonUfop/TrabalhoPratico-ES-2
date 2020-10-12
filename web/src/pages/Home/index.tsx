@@ -3,6 +3,7 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 
 import imagem from '../../assets/pets.png';
+import logo from '../../assets/logo2.png';
 
 
 const Home = () => {
@@ -10,19 +11,26 @@ const Home = () => {
         <div id="page-home">
             <div className='content'>
                 <header>
-                  
-                
-                    <ul id="opcoes">
-                        <Link to="/dashboard">
-                            <li>ADOTAR</li>
-                        </Link>
+                    <div className="menu">
+                        <img src={logo} alt="Logo" height={64} />
+                        <ul id="opcoes">
+                            <Link to="/" className="link">
+                                <li className="active">HOME</li>
+                            </Link>
 
-                        <Link to="/create-user">
-                            <li>CADASTRO</li>
-                        </Link>
+                            <Link to="/dashboard" className="link">
+                                <li>ADOTAR</li>
+                            </Link>
 
-                        
-                    </ul>
+                            <div className="dropdown">
+                                <button id="btn-cadastrar">CADASTRAR</button>
+                                    <div className="opcoes-cadastrar">
+                                        <Link to="/create-user">USUÁRIO</Link>
+                                        <Link to="/create-pet">PET</Link>
+                                    </div>
+                            </div>
+                        </ul>
+                    </div>
 
                 </header>
                 <main>
