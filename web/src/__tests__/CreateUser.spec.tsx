@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Dashboard from '../pages/Dashboard';
 
+import CreateUser from '../pages/CreateUser';
 
 jest.mock('react-router-dom', () => {
   return {
@@ -10,13 +10,11 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('Página', () => {
-  it('Teste para saber se a página Dashboard está renderizando', () => {
-
-    const { debug } = render(<Dashboard />);
+describe('Página Cadastrar Usuários', () => {
+  it('Teste para saber se a página Cadastrar Usuários está renderizando', () => {
+    const { debug } = render(<CreateUser />);
 
     debug();
   });
-  
-});
 
+});

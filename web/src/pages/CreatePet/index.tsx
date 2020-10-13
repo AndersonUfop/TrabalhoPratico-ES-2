@@ -137,6 +137,7 @@ const CreatePet = () => {
                                 id="name"
                                 placeholder="Digite o nome do animal"
                                 onChange={handleInputChange}
+                                required
                             />
                         </div>
 
@@ -164,6 +165,7 @@ const CreatePet = () => {
                                     id="breed"
                                     placeholder="Digite a raça do animal"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
 
@@ -192,6 +194,7 @@ const CreatePet = () => {
                                     id="age"
                                     placeholder="Digite a cidade"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
 
@@ -218,6 +221,7 @@ const CreatePet = () => {
                                     id="city"
                                     placeholder="Digite a sua cidade"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
 

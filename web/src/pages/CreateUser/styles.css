@@ -82,7 +82,8 @@
   
   #page-create-point form .field input[type=text],
   #page-create-point form .field input[type=email],
-  #page-create-point form .field input[type=number]  
+  #page-create-point form .field input[type=number],
+  #page-create-point form .field input[type=password]  
   {
     flex: 1;
     background: #472a5c;

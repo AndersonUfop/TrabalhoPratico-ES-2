@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Dashboard from '../pages/Dashboard';
 
+import CreatePet from '../pages/CreatePet';
 
 jest.mock('react-router-dom', () => {
   return {
@@ -10,13 +10,11 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('Página', () => {
-  it('Teste para saber se a página Dashboard está renderizando', () => {
-
-    const { debug } = render(<Dashboard />);
+describe('Pagina Cadastrar Pet', () => {
+  it('Teste para saber se a página CreatePet está renderizando', () => {
+    const { debug } = render(<CreatePet />);
 
     debug();
-  });
-  
+  })
 });
-
+ 

@@ -56,6 +56,10 @@ const CreateUser = () => {
         history.push('/create-pet');
     }
 
+    async function redirectQueroAdotar() {
+        history.push('/dashboard');
+    }
+
 
     // Renderização da página
     return (
@@ -82,6 +86,7 @@ const CreateUser = () => {
                                 id="name"
                                 placeholder="Digite o seu nome"
                                 onChange={handleInputChange}
+                                required
                             />
                         </div>
 
@@ -94,6 +99,7 @@ const CreateUser = () => {
                                     id="telephone"
                                     placeholder="Digite o seu telefone"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
 
@@ -105,6 +111,7 @@ const CreateUser = () => {
                                     id="mail"
                                     placeholder="Digite o seu e-mail"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
                         </div>
@@ -113,19 +120,21 @@ const CreateUser = () => {
                             <div className='field'> 
                                 <label htmlFor="password"> SENHA</label>
                                 <input 
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     id="password"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
 
                             <div className='field'> 
                                 <label htmlFor="name">CONFIRMAR SENHA</label>
                                 <input 
-                                    type="text"
+                                    type="password"
                                     name="conf-senha"
                                     id="conf-senha"
+                                    required
                                 />
                             </div>
                         </div>
@@ -138,13 +147,14 @@ const CreateUser = () => {
                                     id="address"
                                     placeholder="Digite o seu endereço"
                                     onChange={handleInputChange}
+                                    required
                                 />
                             </div>
                     </fieldset>
                     <div className="Buttons">
                         <button type="submit">Cadastrar usuário</button> 
                         <button type="button" onClick={redirectCreatePet}>Cadastrar pet</button> 
-                        <button type="button">Quero adotar</button>
+                        <button type="button" onClick={redirectQueroAdotar}>Quero adotar</button>
                     </div>
                     </form>
                 </div>
