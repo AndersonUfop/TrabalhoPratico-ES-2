@@ -1,0 +1,112 @@
+#dashboard{
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+#dashboard header {
+  margin-top: 48px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#dashboard header a {
+  color: var(--title-color);
+  font-weight: bold;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+}
+
+#dashboard header a svg {
+  margin-right: 16px;
+  color: #472a5c;
+}
+
+#dashboard .content .Titulo {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#dashboard .content ul {
+  
+  width: 500px;
+  height: 800px;
+  margin-top: 50px;
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
+}
+
+#dashboard .content ul li {
+  background: #fff;
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+#dashboard .content ul li .rodape {
+  background: #F5EBCA;
+  margin-top: 10px;
+  height: 50px;
+
+  display: grid;
+}
+
+#dashboard .content ul li .animal {
+  max-width: 100%;
+  width: 500px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center; 
+}
+
+#dashboard .content ul li h1 {
+  color: #000;
+  padding: 10px;
+}
+
+#dashboard .content ul li strong {
+  color: #000;
+  padding: 10px;
+  font-size: 18px;
+}
+
+
+
+#dashboard .content ul li button {
+  margin-left: 120px;
+  height: 40px;
+  width: 100px;
+  margin-top: 5px;
+  color: #FFF;
+  background: #472a5c;
+  border-radius: 10%;
+  cursor: pointer;
+  font-size: 12px;
+
+}
+
+
+#FoodsContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0;
+  margin-top: 40px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
+}
+
+
+
+
