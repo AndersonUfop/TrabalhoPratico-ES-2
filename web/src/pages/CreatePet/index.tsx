@@ -60,7 +60,7 @@ const CreatePet = () => {
 
     function handleSelectSex(event: ChangeEvent<HTMLSelectElement>) {
         const sex = event.target.value;
-        setSelectedPort(sex);
+        setSelectedSex(sex);
         console.log(sex);
     }
 

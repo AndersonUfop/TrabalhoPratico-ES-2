@@ -3,9 +3,6 @@ import { Link} from 'react-router-dom';
 
 import logo from '../../assets/logo2.png';
 
-import dog from '../../assets/dog.jpeg';
-
-
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
