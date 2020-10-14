@@ -14,7 +14,7 @@
 - <a href="#-o-projeto">O Projeto</a>
 - <a href="#-layout">Layout</a>
 - <a href="#-tecnologias">Tecnologias</a>
-- <a href="#--organizaçao-das-pastas">Organização das pastas</a>
+- <a href="#-organização-das-pastas">Organização das pastas</a>
 - <a href="#-testes">Testes</a>
 - <a href="#-como-executar-o-projeto">Como executar o projeto</a>
 - <a href="#-desenvolvedores">Desenvolvedores</a>
@@ -136,7 +136,7 @@ As pastas do backend foram organizadas da seguinte maneira:
     - Juliana Lemos
     - Rosabel Braga
 
-    <h2> 📝 Licença</h2>
+    <h2>📝 Licença</h2>
     Este projeto está sobre a licença [MIT](./LICENSE).
 
 
