@@ -31,7 +31,7 @@ Também é possível anunciar pets pela plataforma, mas antes o usuário deverá
 <img src=".img/img2.jpg">
 <img src=".img/img3.jpg">
 <img src=".img/img4.jpg">
-Para ter acesso a este layout, você pode entrar por este link do  [Figma](https://www.figma.com/file/IGV0ptubUS3gEOW1FrsfwQ/Associa%C3%A7%C3%A3o-adote-me?node-id=0%3A1).
+Para ter acesso a este layout, você pode entrar por este <a href="https://www.figma.com/file/IGV0ptubUS3gEOW1FrsfwQ/Associa%C3%A7%C3%A3o-adote-me?node-id=0%3A1">link do figma</a>.
 
 <h2>🛠 Tecnologias</h2>
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -137,7 +137,6 @@ As pastas do backend foram organizadas da seguinte maneira:
     - Rosabel Braga
 
     <h2>📝 Licença</h2>
-    Este projeto está sobre a licença [MIT](./LICENSE).
-
+    Este projeto está sobre a licença <a href="./LICENSE">MIT</a>.
 
 
