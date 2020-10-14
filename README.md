@@ -14,12 +14,11 @@
 - <a href="#-o-projeto">O Projeto</a>
 - <a href="#-layout">Layout</a>
 - <a href="#-tecnologias">Tecnologias</a>
-- <a href="#-organizacao-das-pastas">Organização das pastas</a>
+- <a href="#--organizaçao-das-pastas">Organização das pastas</a>
 - <a href="#-testes">Testes</a>
 - <a href="#-como-executar-o-projeto">Como executar o projeto</a>
-- <a href="#-autores">Autores</a>
-- <a href="#-licença">Licença</a>
-- [Licença](#licença)
+- <a href="#-desenvolvedores">Desenvolvedores</a>
+- <a href="#user-content--licença">Licença</a>
 
 <h2>💻 O Projeto</h2>
 
@@ -93,30 +92,30 @@ As pastas do backend foram organizadas da seguinte maneira:
 
     <h3>Backend</h3>
 
-    *Visualizar os pets cadastrados*
+    ***Visualizar os pets cadastrados***
   
     Testa se consegue visualizar os pets cadastrados no banco de dados.
 
-    *Criar usuários*
+    ***Criar usuários***
 
     Testa se consegue cadastrar novos usuários no banco de dados.
 
-    *Visualizar usuários*
+    ***Visualizar usuários***
 
     Testa se consegue visualizar os usuários cadastrados no banco de dados.
 
     <h3>Frontend</h3>
 
-    *Teste para saber se a página dashboard está renderizando*
+    ***Teste para saber se a página dashboard está renderizando***
 
     Testa se todos os elementos da página dashboard foram carregados e estão sendo exibidos na tela.
 
-    *Teste para saber se a página Cadastrar Usuário está renderizando*
+    ***Teste para saber se a página Cadastrar Usuário está renderizando***
 
 
     Testa se todos os elementos da página cadastrar usuário foram carregados e estão sendo exibidos na tela.
 
-    *Teste para saber se a página Cadastrar Pet está renderizando*
+    ***Teste para saber se a página Cadastrar Pet está renderizando***
 
 
     Testa se todos os elementos da página cadastrar pet foram carregados e estão sendo exibidos na tela.
@@ -137,8 +136,8 @@ As pastas do backend foram organizadas da seguinte maneira:
     - Juliana Lemos
     - Rosabel Braga
 
-    <h2>📝 Licença </h2>
-    Este projeto está sobre a licença de 
+    <h2> 📝 Licença</h2>
+    Este projeto está sobre a licença [MIT](./LICENSE).
 
 
 
