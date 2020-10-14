@@ -130,7 +130,7 @@ As pastas do backend foram organizadas da seguinte maneira:
     - Assim que o servidor estiver rodando rode na pasta web o comando `yarn start` ou `npm start`.
 
     <h2>💻 Desenvolvedores</h2>
-    Este projeto foi realizado pelos seguintes autores:
+    Este projeto foi desenvolvido por:
 
     - Anderson Fernandes
     - Juliana Lemos
