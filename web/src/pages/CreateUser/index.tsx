@@ -49,7 +49,7 @@ const CreateUser = () => {
 
        alert('Usuario criado com sucesso!');
 
-        history.push('/');
+        history.push('/dashboard');
     }
 
     async function redirectCreatePet() {

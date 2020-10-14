@@ -3,7 +3,7 @@ const GetPets = require('../modules/pets/controllers/FindByPetsController');
 
 describe('Pets', () => {
 
-  it('Should be abe get pets', async () => {
+  it('Vizualizar os pets cadastrados', async () => {
     const pet = await request(GetPets)
       .post('/pets')
       .send({

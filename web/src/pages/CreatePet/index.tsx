@@ -102,7 +102,7 @@ const CreatePet = () => {
         
         alert('Pet cadastrado com sucesso.');
         
-        history.push('/');
+        history.push('/dashboard');
     }
 
 

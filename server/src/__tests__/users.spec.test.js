@@ -3,7 +3,7 @@ const   CreateUser  = require('../modules/users/controllers/CreateUsersControlle
 
 describe('Users', () => {
 
-  it('should be able create user', async () => {
+  it('Criar usuários', async () => {
     const response = await request(CreateUser)
       .post('/users')
       .send({
@@ -29,7 +29,7 @@ describe('Users', () => {
 
   });
 
-  it('Find by users', () => {
+  it('Vizualizar usuários', () => {
 
     const vet = [
       CreateUser.name = 'Luiz',

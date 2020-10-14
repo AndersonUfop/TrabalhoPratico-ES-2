@@ -27,19 +27,13 @@ interface User {
 
 const Dashboard: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
   
 
   useEffect(() => {
     api.get('pets').then(response => {
       setPets(response.data);
-      /* console.log(response.data);  */
     });
-
-    api.get('users').then(response => {
-      setUsers(response.data);
-     /*  console.log(response.data);  */
-    })
+    
   }, []);
 
 
