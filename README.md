@@ -18,7 +18,7 @@
 - <a href="#-testes">Testes</a>
 - <a href="#-como-executar-o-projeto">Como executar o projeto</a>
 - <a href="#-desenvolvedores">Desenvolvedores</a>
-- <a href="#user-content--licença">Licença</a>
+- <a href="#-licença">Licença</a>
 
 <h2>💻 O Projeto</h2>
 
